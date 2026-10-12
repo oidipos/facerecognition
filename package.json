@@ -11,11 +11,13 @@
 		"test": "tests"
 	},
 	"dependencies": {
+		"@nextcloud/auth": "^2.1.0",
 		"@nextcloud/axios": "^2.3.0",
 		"@nextcloud/dialogs": "^3.2.0",
 		"@nextcloud/router": "^2.0.1",
 		"@nextcloud/vue": "^7.4.0",
 		"handlebars": "^4.7.7",
+		"jquery": "^3.7.1",
 		"lozad": "^1.16.0",
 		"vue": "^2.7.14"
 	},

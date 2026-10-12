@@ -181,7 +181,7 @@ class ImageMapper extends QBMapper {
 	 * @param IUser|null $user User for which to get images for. If not given, all images from instance are returned.
 	 * @param int $modelId Model Id to get images for.
 	 */
-	public function findImagesWithoutFaces(IUser $user = null, int $modelId): array {
+	public function findImagesWithoutFaces(?IUser $user, int $modelId): array {
 		$qb = $this->db->getQueryBuilder();
 		$qb
 			->select(['id', 'user', 'file', 'model'])
@@ -273,7 +273,7 @@ class ImageMapper extends QBMapper {
 	 *
 	 * @return void
 	 */
-	public function imageProcessed(Image $image, array $faces, int $duration, \Exception $e = null): void {
+	public function imageProcessed(Image $image, array $faces, int $duration, ?\Exception $e = null): void {
 		$this->db->beginTransaction();
 		try {
 			// Update image itself

@@ -35,6 +35,7 @@ use OCP\Files\Folder;
 use OCP\Files\Events\Node\NodeWrittenEvent;
 
 use OCP\IUserManager;
+use OCP\IUserSession;
 
 use OCA\FaceRecognition\Service\FileService;
 use OCA\FaceRecognition\Service\SettingsService;
@@ -115,11 +116,11 @@ class PostWriteListener implements IEventListener {
 		if ($this->fileService->isUserFile($node)) {
 			$owner = $node->getOwner()->getUid();
 		} else {
-			if (!\OC::$server->getUserSession()->isLoggedIn()) {
+			if (!\OC::$server->get(IUserSession::class)->isLoggedIn()) {
 				$this->logger->debug('Skipping interting file ' . $node->getName() . ' since we cannot determine the owner.');
 				return;
 			}
-			$owner = \OC::$server->getUserSession()->getUser()->getUID();
+			$owner = \OC::$server->get(IUserSession::class)->getUser()->getUID();
 		}
 
 		if (!$this->userManager->userExists($owner)) {

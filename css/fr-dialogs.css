@@ -1,5 +1,27 @@
 /* Dialog */
 
+dialog.fr-dialog {
+	min-width: 200px;
+	max-width: calc(100% - 20px);
+	padding: 24px;
+	border: none;
+	border-radius: var(--border-radius-large);
+	background: var(--color-main-background);
+	box-shadow: 0 0 30px var(--color-box-shadow);
+	color: var(--color-main-text);
+}
+
+dialog.fr-dialog::backdrop {
+	background-color: rgba(0, 0, 0, .2);
+}
+
+.fr-dialog-buttonrow {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	padding-top: 10px;
+}
+
 #fr-assign-dialog-input,
 #fr-rename-dialog-input,
 #fr-detach-face-dialog-input {

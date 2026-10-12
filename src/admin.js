@@ -1,3 +1,7 @@
+import { showMessage } from '@nextcloud/dialogs'
+import '@nextcloud/dialogs/styles/toast.scss'
+import $ from './jquery-compat.js'
+
 'use strict';
 $(document).ready(function() {
     const state = {
@@ -89,7 +93,7 @@ $(document).ready(function() {
             },
             success: function (data) {
                 if (data.status === state.SUCCESS) {
-                    OC.Notification.showTemporary(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
+                    showMessage(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
                     $('#restore-image-area').hide();
                     $('#save-image-area').hide();
                 }
@@ -99,7 +103,7 @@ $(document).ready(function() {
                     $('#image-area-value').html(getFourByThreeRelation(suggestedImageArea));
                     var message = t('facerecognition', 'The change could not be applied.');
                     message += " - " + data.message;
-                    OC.Notification.showTemporary(message);
+                    showMessage(message);
                 }
             }
         });
@@ -152,7 +156,7 @@ $(document).ready(function() {
             },
             success: function (data) {
                 if (data.status === state.SUCCESS) {
-                    OC.Notification.showTemporary(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
+                    showMessage(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
                     $('#restore-sensitivity').hide();
                     $('#save-sensitivity').hide();
                 }
@@ -206,7 +210,7 @@ $(document).ready(function() {
             },
             success: function (data) {
                 if (data.status === state.SUCCESS) {
-                    OC.Notification.showTemporary(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
+                    showMessage(t('facerecognition', 'The changes were saved. It will be taken into account in the next analysis.'));
                     $('#restore-min-confidence').hide();
                     $('#save-min-confidence').hide();
                 }
@@ -260,7 +264,7 @@ $(document).ready(function() {
             },
             success: function (data) {
                 if (data.status === state.SUCCESS) {
-                    OC.Notification.showTemporary(t('facerecognition', 'Done'));
+                    showMessage(t('facerecognition', 'Done'));
                     $('#restore-min-no-faces').hide();
                     $('#save-min-no-faces').hide();
                 }

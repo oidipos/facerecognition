@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.9.91] - 2026-10-09
+- Support Nextcloud 34.
+- Bundle jQuery (sending the CSRF token like core's jQuery did) and replace the removed OC.Notification, ocdialog and octemplate in the settings pages.
+- Fix the remaining PHP 8.4 implicit nullable and optional-before-required parameter deprecations.
+
 ## [0.9.90] - 2026-05-31
 - Support Nextcloud 33.
 - Support PHP 8.5 in line with NC33.

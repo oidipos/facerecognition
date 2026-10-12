@@ -19,6 +19,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import $ from './jquery-compat.js'
+
 /**
  * this class to ease the usage of jquery dialogs
  */
@@ -484,3 +486,5 @@ const FrDialogs = {
 	}
 
 }
+
+export default FrDialogs

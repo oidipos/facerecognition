@@ -34,6 +34,8 @@ use OCP\EventDispatcher\IEventListener;
 use OCP\Files\Folder;
 use OCP\Files\Events\Node\NodeDeletedEvent;
 
+use OCP\IUserSession;
+
 use OCA\FaceRecognition\Service\FileService;
 use OCA\FaceRecognition\Service\SettingsService;
 use OCA\FaceRecognition\Db\FaceMapper;
@@ -108,11 +110,11 @@ class PostDeleteListener implements IEventListener {
 		if ($this->fileService->isUserFile($node)) {
 			$owner = $node->getOwner()->getUid();
 		} else {
-			if (!\OC::$server->getUserSession()->isLoggedIn()) {
+			if (!\OC::$server->get(IUserSession::class)->isLoggedIn()) {
 				$this->logger->debug('Skipping deleting the file ' . $node->getName() .  ' since we cannot determine the owner');
 				return;
 			}
-			$owner = \OC::$server->getUserSession()->getUser()->getUID();
+			$owner = \OC::$server->get(IUserSession::class)->getUser()->getUID();
 		}
 
 		$enabled = $this->settingsService->getUserEnabled($owner);

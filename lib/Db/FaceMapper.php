@@ -371,7 +371,7 @@ class FaceMapper extends QBMapper {
 	 *
 	 * @return Face
 	 */
-	public function insertFace(Face $face, IDBConnection $db = null): Face {
+	public function insertFace(Face $face, ?IDBConnection $db = null): Face {
 		if ($db !== null) {
 			$qb = $db->getQueryBuilder();
 		} else {

@@ -28,6 +28,7 @@ use OC\Files\View;
 
 use OCP\IConfig;
 use OCP\IUser;
+use OCP\IUserManager;
 use OCP\AppFramework\App;
 use OCP\AppFramework\IAppContainer;
 
@@ -61,7 +62,7 @@ abstract class IntegrationTestCase extends TestCase {
 		}
 
 		// Create user on which we will upload images and do testing
-		$userManager = OC::$server->getUserManager();
+		$userManager = OC::$server->get(IUserManager::class);
 		$username = 'testuser' . rand(0, PHP_INT_MAX);
 		$this->user = $userManager->createUser($username, 'password');
 		$this->loginAsUser($username);
