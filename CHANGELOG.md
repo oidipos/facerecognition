@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.9.92] - 2026-11-10
+- Support Nextcloud 35, keeping Nextcloud 34 support so the app can be updated before upgrading the server.
+- Declare the int return type of the occ commands, required by Symfony Console 7 in Nextcloud 35.
+- Stop relying on the global underscore library removed in Nextcloud 35.
+
 ## [0.9.91] - 2026-10-09
 - Support Nextcloud 34.
 - Bundle jQuery (sending the CSRF token like core's jQuery did) and replace the removed OC.Notification, ocdialog and octemplate in the settings pages.

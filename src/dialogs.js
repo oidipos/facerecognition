@@ -22,6 +22,22 @@
 import $ from './jquery-compat.js'
 
 /**
+ * Like underscore's _.once(), which Nextcloud 35 no longer provides globally:
+ * only the first call runs func, later calls return its result.
+ */
+function once (func) {
+	var called = false;
+	var result;
+	return function () {
+		if (!called) {
+			called = true;
+			result = func.apply(this, arguments);
+		}
+		return result;
+	};
+}
+
+/**
  * this class to ease the usage of jquery dialogs
  */
 const FrDialogs = {
@@ -52,11 +68,11 @@ const FrDialogs = {
 
 			$('body').append($dlg);
 
-			// wrap callback in _.once():
+			// wrap callback in once():
 			// only call callback once and not twice (button handler and close
 			// event) but call it for the close event, if ESC or the x is hit
 			if (callback !== undefined) {
-				callback = _.once(callback);
+				callback = once(callback);
 			}
 
 			var buttonlist = [{
@@ -121,11 +137,11 @@ const FrDialogs = {
 
 			$('body').append($dlg);
 
-			// wrap callback in _.once():
+			// wrap callback in once():
 			// only call callback once and not twice (button handler and close
 			// event) but call it for the close event, if ESC or the x is hit
 			if (callback !== undefined) {
-				callback = _.once(callback);
+				callback = once(callback);
 			}
 
 			var buttonlist = [{
@@ -209,11 +225,11 @@ const FrDialogs = {
 
 			$('body').append($dlg);
 
-			// wrap callback in _.once():
+			// wrap callback in once():
 			// only call callback once and not twice (button handler and close
 			// event) but call it for the close event, if ESC or the x is hit
 			if (callback !== undefined) {
-				callback = _.once(callback);
+				callback = once(callback);
 			}
 
 			var buttonlist = [{
@@ -302,11 +318,11 @@ const FrDialogs = {
 
 			$('body').append($dlg);
 
-			// wrap callback in _.once():
+			// wrap callback in once():
 			// only call callback once and not twice (button handler and close
 			// event) but call it for the close event, if ESC or the x is hit
 			if (callback !== undefined) {
-				callback = _.once(callback);
+				callback = once(callback);
 			}
 
 			var buttonlist = [{
@@ -404,11 +420,11 @@ const FrDialogs = {
 
 			$('body').append($dlg);
 
-			// wrap callback in _.once():
+			// wrap callback in once():
 			// only call callback once and not twice (button handler and close
 			// event) but call it for the close event, if ESC or the x is hit
 			if (callback !== undefined) {
-				callback = _.once(callback);
+				callback = once(callback);
 			}
 
 			var buttonlist = [{
