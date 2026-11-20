@@ -80,7 +80,7 @@ class Imaginary {
 		$httpClient = $this->service->newClient();
 
 		try {
-			$options = [];
+			$options = ['nextcloud' => ['allow_local_address' => true]];
 			if ($this->hasKey()) {
 				$options['query'] = [
 					'key' => $this->getKey(),
@@ -111,7 +111,7 @@ class Imaginary {
 
 		$httpClient = $this->service->newClient();
 
-		$options = [];
+		$options = ['nextcloud' => ['allow_local_address' => true]];
 		$options['multipart'] = [[
 			'name' => 'file',
 			'contents' => file_get_contents($filepath),
